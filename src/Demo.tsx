@@ -5,12 +5,18 @@ import TodoCard from "./components/TodoCard";
 
 const Demo = () => {
     // const {isLoading, error, data} = useQuery("repoData", () => {});
-    const queryClient = useQueryClient()
+    const queryClient = useQueryClient();
+
+    const [search, setSearch] = useState("");
     const [title, setTitle] = useState("");
 
     const {data: todos, isLoading} = useQuery({
-        queryFn: () => fetchTodos(),
-        queryKey: ["todos"]
+        queryFn: () => fetchTodos(search),
+        queryKey: ["todos", {search}],
+        // catching withod re fetching
+        // staleTime: Infinity, 
+        // never catch data
+        // cacheTime: 0 
     });
 
     const { mutateAsync: addTodoMutation } = useMutation({
