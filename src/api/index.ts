@@ -1,11 +1,5 @@
-// import Todo from "../entities/Todo"
-
-interface Todo {
-        id: number,
-        title: string,
-        completed: boolean
-    }
-
+import type { Todo } from "../entities/Todo"
+ 
 const todos = [
     {
         id:1,
